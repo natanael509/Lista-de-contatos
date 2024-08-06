@@ -1,30 +1,49 @@
 const form = document.getElementById('formulario');
 let linhas = '';
 
+const nomes = []
+const telefone = []
+
 form.addEventListener('submit', function(e) {
     e.preventDefault();
+
     adicionarLinha();
     atualizarConteudo();
+    atualizaTotalContatos(); // Call the function to update the total number of contacts
 });
 
 function adicionarLinha() {
     const inputNome = document.getElementById('nome-completo');
     const inputNumero = document.getElementById('numero-celular');
 
-    const linha = `
-    <tr>
-        <td>${inputNome.value}</td>
-        <td>${inputNumero.value}</td>
-    </tr>
-    `;
+    if (telefone.includes(inputNumero.value)) {
+        alert(`O número: ${inputNumero.value} já está cadastrado`)
+    } else {
+        nomes.push(inputNome.value);
+        telefone.push(inputNumero.value);
 
-    linhas += linha;
+        let linha = '<tr>';
+        linha += `<td>${inputNome.value} </td>`;
+        linha += `<td>${inputNumero.value} </td>`;
+        linha += '</tr>'; // Corrected the closing tag
 
-    inputNome.value = '';;
-  inputNumero.value = ''; // Limpar campo de numero
+        linhas += linha;
+    }
+
+    inputNome.value = '';
+    inputNumero.value = '';
 }
 
 function atualizarConteudo() {
     const corpoTabela = document.querySelector('tbody');
     corpoTabela.innerHTML = linhas;
+}
+
+function inputTotal() {
+    return nomes.length;
+}
+
+function atualizaTotalContatos() {
+    const total = inputTotal();
+    document.getElementById('total-contatos').innerHTML = total; // Corrected the syntax
 }
