@@ -9,7 +9,7 @@ form.addEventListener('submit', function(e) {
 
     adicionarLinha();
     atualizarConteudo();
-    atualizaTotalContatos(); // Call the function to update the total number of contacts
+    atualizaTotalContatos(); 
 });
 
 function adicionarLinha() {
@@ -25,8 +25,7 @@ function adicionarLinha() {
         let linha = '<tr>';
         linha += `<td>${inputNome.value} </td>`;
         linha += `<td>${inputNumero.value} </td>`;
-        linha += '</tr>'; // Corrected the closing tag
-
+        linha += '</tr>';
         linhas += linha;
     }
 
@@ -45,5 +44,5 @@ function inputTotal() {
 
 function atualizaTotalContatos() {
     const total = inputTotal();
-    document.getElementById('total-contatos').innerHTML = total; // Corrected the syntax
+    document.getElementById('total-contatos').innerHTML = total; 
 }
