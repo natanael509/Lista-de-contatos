@@ -8,11 +8,6 @@ form.addEventListener('submit', function(e) {
     const inputNome = document.getElementById('nome-completo');
     const inputNumero = document.getElementById('numero-celular');
 
-    if (inputNumero.value.length > 11) {
-        alert('Número de celular inválido. Por favor, digite no máximo 11 caracteres.');
-        return;
-}
-
     const linha = criarLinha(inputNome.value, inputNumero.value);
     corpoTabela.appendChild(linha);
 
