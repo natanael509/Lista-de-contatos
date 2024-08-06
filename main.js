@@ -1,30 +1,33 @@
-
-const form = document.getElementById('formulario');
-const corpoTabela = document.querySelector('tbody');
+const form = document.getElementById('formulario')
+    let linhas = ' ';
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
+
+    adicionarLinha()
+    atualizarConteudo()
+
+
+
+});
+
+function adicionarLinha() {
     const inputNome = document.getElementById('nome-completo');
     const inputNumero = document.getElementById('numero-celular');
 
-    const linha = criarLinha(inputNome.value, inputNumero.value);
-    corpoTabela.appendChild(linha);
+    let linha = '<tr>';
+    linha += <td> ${inputNome.value}</td>;
+    linha +=<td> ${inputNumero.value}</td>;
+    linha += '</tr>';
+
+    linhas += linha;
 
     inputNome.value = '';
-    inputNumero.value = '';
-});
+}
 
-function criarLinha(nome, numero) {
-    const linha = document.createElement('tr');
-    const celulaNome = document.createElement('td');
-    const celulaNumero = document.createElement('td');
 
-    celulaNome.textContent = nome;
-    celulaNumero.textContent = numero;
-
-    linha.appendChild(celulaNome);
-    linha.appendChild(celulaNumero);
-
-    return linha;
+function atualizarConteudo() {
+    const corpoTabela = document.querySelector('tbody');
+    corpoTabela.innerHTML = linhas;
 }
