@@ -1,31 +1,28 @@
-const form = document.getElementById('formulario')
-    let linhas = ' ';
+const form = document.getElementById('formulario');
+let linhas = '';
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-
-
-    adicionarLinha()
-    atualizarConteudo()
-
-
-
+    adicionarLinha();
+    atualizarConteudo();
 });
 
 function adicionarLinha() {
     const inputNome = document.getElementById('nome-completo');
     const inputNumero = document.getElementById('numero-celular');
 
-    let linha = '<tr>';
-    linha += <td> ${inputNome.value}</td>;
-    linha +=<td> ${inputNumero.value}</td>;
-    linha += '</tr>';
+    const linha = `
+    <tr>
+        <td>${inputNome.value}</td>
+        <td>${inputNumero.value}</td>
+    </tr>
+    `;
 
     linhas += linha;
 
-    inputNome.value = '';
+    inputNome.value = '';;
+  inputNumero.value = ''; // Limpar campo de numero
 }
-
 
 function atualizarConteudo() {
     const corpoTabela = document.querySelector('tbody');
