@@ -1,34 +1,35 @@
 
-const form = document.getElementById('formulario')
-    let linhas = ' ';
+const form = document.getElementById('formulario');
+const corpoTabela = document.querySelector('tbody');
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-
-    adicionarLinha()
-    atualizarConteudo()
-
-
-
-});
-
-function adicionarLinha() {
     const inputNome = document.getElementById('nome-completo');
     const inputNumero = document.getElementById('numero-celular');
 
-    let linha = '<tr>';
-    linha += `<td> ${inputNome.value}</td>`;
-    linha +=`<td> ${inputNumero.value} 'max.length=11' </td>`;
-    linha += '</tr>';
-
-    linhas += linha;
-
-    inputNome.value = '';
+    if (inputNumero.value.length > 11) {
+        alert('Número de celular inválido. Por favor, digite no máximo 11 caracteres.');
+        return;
 }
 
+    const linha = criarLinha(inputNome.value, inputNumero.value);
+    corpoTabela.appendChild(linha);
 
-function atualizarConteudo() {
-    const corpoTabela = document.querySelector('tbody');
-    corpoTabela.innerHTML = linhas;
+    inputNome.value = '';
+    inputNumero.value = '';
+});
+
+function criarLinha(nome, numero) {
+    const linha = document.createElement('tr');
+    const celulaNome = document.createElement('td');
+    const celulaNumero = document.createElement('td');
+
+    celulaNome.textContent = nome;
+    celulaNumero.textContent = numero;
+
+    linha.appendChild(celulaNome);
+    linha.appendChild(celulaNumero);
+
+    return linha;
 }
