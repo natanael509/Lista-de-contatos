@@ -35,7 +35,7 @@ function adicionarLinha() {
 
 function atualizarConteudo() {
     const corpoTabela = document.querySelector('tbody');
-    corpoTabela.innerHTML = linaaahas;
+    corpoTabela.innerHTML = linhas;
 }
 
 function inputTotal() {
